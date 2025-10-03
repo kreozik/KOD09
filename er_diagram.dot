@@ -1,0 +1,21 @@
+digraph ER {
+    node [shape=record];
+
+    Clients [label="{Clients|client_id : INTEGER\l full_name : TEXT\l email : TEXT\l phone : TEXT\l}"];
+
+    Sellers [label="{Sellers|seller_id : INTEGER\l full_name : TEXT\l position : TEXT\l}"];
+
+    Warehouses [label="{Warehouses|warehouse_id : INTEGER\l name : TEXT\l address : TEXT\l capacity : INTEGER\l shelves : INTEGER\l}"];
+
+    Products [label="{Products|product_id : INTEGER\l model_name : TEXT\l category : TEXT\l manufacturer : TEXT\l size : INTEGER\l color : TEXT\l price_per_pair : REAL\l}"];
+
+    Orders [label="{Orders|order_id : INTEGER\l order_number : INTEGER\l order_date : TEXT\l client_id : INTEGER\l}"];
+
+    OrderItems [label="{OrderItems|order_item_id : INTEGER\l order_id : INTEGER\l product_id : INTEGER\l quantity : INTEGER\l seller_id : INTEGER\l warehouse_id : INTEGER\l}"];
+
+    Clients -> Orders [label="1..*"];
+    Sellers -> OrderItems [label="1..*"];
+    Warehouses -> OrderItems [label="1..*"];
+    Products -> OrderItems [label="1..*"];
+    Orders -> OrderItems [label="1..*"];
+}
